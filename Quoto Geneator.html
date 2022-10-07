@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    
+<div>
+<blockquote class="otro-blockquote" >
+    <p id="quoto">Morales has turned Bolivia's already ductile democracy into a plasticine with which his hands play at will.</p>
+  <span id="author">Steve Jobs</span>
+  
+</blockquote>
+<button class="button-30" id="generate" role="button">Generate Quoto</button>
+</div>
+<script>
+    document.getElementById("generate").addEventListener("click",function(){
+        function getRandomItem(arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    const item = arr[randomIndex];
+    return item;
+    }
+        fetch("https://type.fit/api/quotes")
+        .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        var z = getRandomItem(data);
+        document.getElementById("quoto").innerHTML = z.text;
+        document.getElementById("author").innerHTML = z.author;
+        //console.log(data);
+    });
+})
+    function getRandomItem(arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    const item = arr[randomIndex];
+    return item;
+    }
+    
+    
+    </script>
+</body>
+</html>
